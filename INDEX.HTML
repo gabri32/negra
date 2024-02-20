@@ -14,9 +14,18 @@
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    position: relative; /* Agregado para que el contenedor sea relativo */
+    overflow: hidden; /* Agregado para ocultar el desbordamiento */
   }
   h1 {
     color: #d81b60;
+  }
+  .carousel {
+    display: flex; /* Establece un contenedor flexible */
+    transition: transform 0.5s ease; /* Agrega una transición suave para el desplazamiento */
+  }
+  .slide {
+    min-width: 100%; /* Cada diapositiva ocupa todo el ancho del contenedor */
   }
   #text-area {
     width: 80%;
@@ -37,66 +46,58 @@
   #submit-btn:hover {
     background-color: #c2185b;
   }
-  .hearts {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    pointer-events: none;
-    animation: heartsAnimation 8s ease-in-out forwards;
-  }
-  @keyframes heartsAnimation {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
 </style>
 </head>
 <body>
 <div id="container">
   <h1>Para Mi Negra</h1>
-  <img src="heart-shape-from-two-hand-with-sunrise-background-1.jpg" alt="Corazón y Rosas" style="width: 200px; height: auto;">
-  <p>¡Hola amor!</p>
-  <p>Quiero dedicarte este espacio para expresarte cuánto significas para mí.</p>
+  <div class="carousel">
+    <img src="IMG-20230126-WA0084.jpg" class="slide" alt="Corazón y Rosas" style="width: 200px; height: auto;">
+    <img src="IMG-20221123-WA0007.jpg" class="slide" style="width: 200px; height: auto;">
+    <img src="IMG-20221202-WA0028.jpg" class="slide" style="width: 200px; height: auto;">
+    <img src="IMG-20221211-WA0063.jpg" class="slide" style="width: 200px; height: auto;">
+    <img src="IMG-20230109-WA0046.jpg" class="slide" style="width: 200px; height: auto;">
+    <img src="IMG-20231005-WA0010.jpg" class="slide" style="width: 200px; height: auto;">
+    <img src="IMG-20231006-WA0058.jpg" class="slide" alt="mosti" style="width: 200px; height: auto;">
+  </div>
+
+  <p>¡Mosti!</p>
+  <p>No es lo mejor pero funciona.</p>
   <textarea id="text-area" placeholder="Escribe tu mensaje aquí">Mi Negra,
 
-    Quiero que sepas que te amo más de lo que las palabras pueden expresar. Eres mi razón de ser, mi alegría y mi inspiración. Siempre deseo verte feliz, porque tu felicidad es mi mayor anhelo en la vida.
+    Se que lo extrañas y yo hice esto con lo que tenia a mano 
     
-    Cada momento a tu lado es un regalo precioso que atesoro con todo mi corazón. Estoy agradecido por cada risa compartida, cada abrazo cálido y cada instante de complicidad que compartimos juntos.
-    
-    Prometo estar siempre a tu lado, apoyarte en tus sueños y ser tu roca en los momentos difíciles. Quiero que sepas que siempre estaré aquí para ti, para celebrar tus triunfos y para secar tus lágrimas cuando sea necesario.
-    
-    Te amo más de lo que puedo expresar.
-    
-    Con todo mi amor, PUES YO</textarea>
+  </textarea>
   <br>
-  <button id="submit-btn" onclick="showHearts()">Enviar</button>
+  <button id="submit-btn" onclick="prevSlide()">&#10094; Anterior</button>
+  <button id="submit-btn" onclick="nextSlide()">Siguiente &#10095;</button>
 </div>
 
 <script>
-  function showHearts() {
-    document.getElementById("container").style.display = "none";
-    let heartsContainer = document.createElement("div");
-    heartsContainer.className = "hearts";
-    let hearts = document.createElement("div");
-    hearts.innerHTML = "Te Amo";
-    hearts.style.fontSize = "3em";
-    hearts.style.position = "absolute";
-    hearts.style.top = "50%";
-    hearts.style.left = "50%";
-    hearts.style.transform = "translate(-50%, -50%)";
-    hearts.style.color = "#ff0000";
-    heartsContainer.appendChild(hearts);
-    document.body.appendChild(heartsContainer);
+  let slideIndex = 0;
+
+  function showSlides() {
+    const slides = document.getElementsByClassName("slide");
+    if (slideIndex >= slides.length) {slideIndex = 0}
+    if (slideIndex < 0) {slideIndex = slides.length - 1}
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex].style.display = "block";
   }
+
+  function nextSlide() {
+    slideIndex++;
+    showSlides();
+  }
+
+  function prevSlide() {
+    slideIndex--;
+    showSlides();
+  }
+
+  // Muestra la primera imagen al cargar la página
+  showSlides();
 </script>
 </body>
 </html>
