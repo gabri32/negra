@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para la negra de mi vida</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #372f8e;
+    text-align: center;
+  }
+  #container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  h1 {
+    color: #d81b60;
+  }
+  #text-area {
+    width: 80%;
+    height: 100px;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+  #submit-btn {
+    background-color: #d81b60;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  #submit-btn:hover {
+    background-color: #c2185b;
+  }
+  .hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    pointer-events: none;
+    animation: heartsAnimation 8s ease-in-out forwards;
+  }
+  @keyframes heartsAnimation {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+<div id="container">
+  <h1>Para Mi Negra</h1>
+  <img src="heart-shape-from-two-hand-with-sunrise-background-1.jpg" alt="Corazón y Rosas" style="width: 200px; height: auto;">
+  <p>¡Hola amor!</p>
+  <p>Quiero dedicarte este espacio para expresarte cuánto significas para mí.</p>
+  <textarea id="text-area" placeholder="Escribe tu mensaje aquí">Mi Negra,
+
+    Quiero que sepas que te amo más de lo que las palabras pueden expresar. Eres mi razón de ser, mi alegría y mi inspiración. Siempre deseo verte feliz, porque tu felicidad es mi mayor anhelo en la vida.
+    
+    Cada momento a tu lado es un regalo precioso que atesoro con todo mi corazón. Estoy agradecido por cada risa compartida, cada abrazo cálido y cada instante de complicidad que compartimos juntos.
+    
+    Prometo estar siempre a tu lado, apoyarte en tus sueños y ser tu roca en los momentos difíciles. Quiero que sepas que siempre estaré aquí para ti, para celebrar tus triunfos y para secar tus lágrimas cuando sea necesario.
+    
+    Te amo más de lo que puedo expresar.
+    
+    Con todo mi amor, PUES YO</textarea>
+  <br>
+  <button id="submit-btn" onclick="showHearts()">Enviar</button>
+</div>
+
+<script>
+  function showHearts() {
+    document.getElementById("container").style.display = "none";
+    let heartsContainer = document.createElement("div");
+    heartsContainer.className = "hearts";
+    let hearts = document.createElement("div");
+    hearts.innerHTML = "Te Amo";
+    hearts.style.fontSize = "3em";
+    hearts.style.position = "absolute";
+    hearts.style.top = "50%";
+    hearts.style.left = "50%";
+    hearts.style.transform = "translate(-50%, -50%)";
+    hearts.style.color = "#ff0000";
+    heartsContainer.appendChild(hearts);
+    document.body.appendChild(heartsContainer);
+  }
+</script>
+</body>
+</html>
